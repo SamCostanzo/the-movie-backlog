@@ -3,6 +3,8 @@ import { headers } from "next/headers";
 import { redirect, notFound } from "next/navigation";
 import { prisma } from "@/app/lib/prisma";
 import Container from "@/app/components/Container";
+import MovieCard from "@/app/components/MovieCard";
+import { removeMovieFromList } from "@/app/lib/actions";
 
 export default async function SingleListPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -38,9 +40,14 @@ export default async function SingleListPage({ params }: { params: Promise<{ id:
       <h1 className="font-display text-3xl mb-6">{list.name}</h1>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {movies.map((movie) => (
-          <div key={movie.itemId} className={movie.watched ? "opacity-50" : ""}>
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="rounded-lg border-2 border-ink" />
-            <p className="font-display mt-2">{movie.title}</p>
+          <div key={movie.itemId} className="flex flex-col gap-2">
+            <MovieCard key={movie.id} movie={movie} />
+            <form action={removeMovieFromList} className="text-center">
+              <input type="hidden" name="itemId" value={movie.itemId} />
+              <button type="submit" className="text-brand text-xs uppercase tracking-wide hover:opacity-70 cursor-pointer">
+                Remove
+              </button>
+            </form>
           </div>
         ))}
       </div>

@@ -92,4 +92,5 @@ model ListItem {
 
   listId String
   list   List   @relation(fields: [listId], references: [id], onDelete: Cascade)
+  @@unique([listId, movieId])
 }

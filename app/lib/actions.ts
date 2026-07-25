@@ -49,15 +49,19 @@ export async function addMovieToList(formData: FormData) {
     throw new Error("Not your list");
   }
 
-  // Add the movie to the list
-  await prisma.listItem.create({
-    data: {
-      listId: listId,
-      movieId: movieId,
+  const existing = await prisma.listItem.findUnique({
+    where: {
+      listId_movieId: { listId, movieId }, // Prisma's name for the composite unique
     },
   });
 
+  if (existing) {
+    return { error: "Already in this list" };
+  }
+
+  await prisma.listItem.create({ data: { listId, movieId } });
   revalidatePath(`/movie/${movieId}`);
+  return { success: true };
 }
 
 export async function renameList(formData: FormData) {
@@ -83,6 +87,25 @@ export async function renameList(formData: FormData) {
   });
 
   revalidatePath("/lists");
+}
+
+export async function removeMovieFromList(formData: FormData) {
+  const session = await auth.api.getSession({ headers: await headers() });
+  if (!session) throw new Error("Not logged in");
+
+  const itemId = formData.get("itemId") as string;
+
+  // Verify ownership via the item's list
+  const item = await prisma.listItem.findUnique({
+    where: { id: itemId },
+    include: { list: true },
+  });
+  if (!item || item.list.ownerId !== session.user.id) {
+    throw new Error("Not allowed");
+  }
+
+  await prisma.listItem.delete({ where: { id: itemId } });
+  revalidatePath(`/lists/${item.list.id}`);
 }
 
 export async function deleteList(formData: FormData) {

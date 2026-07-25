@@ -5,6 +5,7 @@ import { auth } from "@/app/lib/auth";
 import { headers } from "next/headers";
 import { addMovieToList } from "@/app/lib/actions";
 import type { List } from "@/app/generated/prisma/client";
+import AddToListForm from "@/app/components/AddToListForm";
 
 export default async function MoviePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -47,11 +48,11 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
           {movie.tagline && <p className="text-brand italic text-lg mb-4">"{movie.tagline}"</p>}
 
           <div className="flex flex-wrap gap-2 mb-6">
-            <span className="bg-ink text-marigold font-bold text-sm px-4 py-1.5 rounded-full">★ {movie.vote_average?.toFixed(1)}</span>
-            <span className="border-2 border-ink text-ink text-sm px-4 py-1.5 rounded-full">{movie.release_date?.slice(0, 4)}</span>
-            <span className="border-2 border-ink text-ink text-sm px-4 py-1.5 rounded-full">{movie.runtime} min</span>
+            <span className="flex items-center justify-center bg-ink text-marigold font-bold text-sm px-4 py-1.5 rounded-full">★ {movie.vote_average?.toFixed(1)}</span>
+            <span className="flex items-center justify-center border-2 border-ink text-ink text-sm px-4 py-1.5 rounded-full">{movie.release_date?.slice(0, 4)}</span>
+            <span className="flex items-center justify-center border-2 border-ink text-ink text-sm px-4 py-1.5 rounded-full">{movie.runtime} min</span>
             {movie.genres?.slice(0, 2).map((genre: Genre) => (
-              <span key={genre.id} className="border-2 border-ink text-ink text-sm px-4 py-1.5 rounded-full">
+              <span key={genre.id} className="flex items-center justify-center border-2 border-ink text-ink text-sm px-4 py-1.5 rounded-full">
                 {genre.name}
               </span>
             ))}
@@ -62,28 +63,14 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
           {/* Action buttons */}
           <div className="flex flex-wrap gap-3 items-center">
             {/* Primary — filled orange */}
-            <button className="bg-brand text-background rounded-full px-6 py-2.5 uppercase text-sm tracking-wider font-body hover:opacity-90 transition-opacity cursor-pointer">+ To Watch</button>
+            {/* <button className="bg-brand text-background rounded-full px-6 py-2.5 uppercase text-sm tracking-wider font-body hover:opacity-90 transition-opacity cursor-pointer">+ To Watch</button> */}
 
             {/* Secondary — outlined teal */}
-            <button className="border-2 border-ink text-ink rounded-full px-6 py-2.5 uppercase text-sm tracking-wider font-body hover:bg-ink hover:text-background transition-colors cursor-pointer">
+            {/* <button className="border-2 border-ink text-ink rounded-full px-6 py-2.5 uppercase text-sm tracking-wider font-body hover:bg-ink hover:text-background transition-colors cursor-pointer">
               ✓ Watched
-            </button>
+            </button> */}
 
-            {session && userLists.length > 0 && (
-              <form action={addMovieToList} className="flex gap-2 items-center">
-                <input type="hidden" name="movieId" value={movie.id} />
-                <select name="listId" className="border-2 border-ink rounded-full px-4 py-2 bg-surface text-ink font-body text-sm cursor-pointer">
-                  {userLists.map((list) => (
-                    <option key={list.id} value={list.id}>
-                      {list.name}
-                    </option>
-                  ))}
-                </select>
-                <button type="submit" className="bg-teal text-background rounded-full px-5 py-2 uppercase tracking-wider text-sm cursor-pointer">
-                  Add
-                </button>
-              </form>
-            )}
+            {session && userLists.length > 0 && <AddToListForm movieId={movie.id} userLists={userLists} />}
           </div>
         </div>
       </div>

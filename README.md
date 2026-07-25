@@ -37,12 +37,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 LIVE CHECKLIST
 
-1. Delete Watchlist/Watched nav items (5 min)
-2. Rating pill fix (10 min, if you know the issue)
-3. MovieCard in single-list view (20 min — reuse existing component)
+1. Delete Watchlist/Watched nav items (5 min) DONE
+2. Rating pill fix (10 min, if you know the issue) DONE
+3. MovieCard in single-list view (20 min — reuse existing component) DONE
 4. Style the single-list view around it (30 min)
 5. Style /login and /register (30 min — you have the vocabulary)
-6. DEPLOY!!!
+6. Don't allow adding same movie more than once to a list DONE
+7. Add remove movie from list DONE
+
+DEPLOY!!!
 
 ADD AFTER LIVE
 

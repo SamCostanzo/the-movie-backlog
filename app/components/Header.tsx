@@ -55,12 +55,12 @@ export default function Header() {
                 Lists
               </Link>
             )}
-            <Link href="/watchlist" className={pathname === "/watchlist" ? "text-marigold" : "hover:text-marigold transition-colors duration-300"}>
+            {/* <Link href="/watchlist" className={pathname === "/watchlist" ? "text-marigold" : "hover:text-marigold transition-colors duration-300"}>
               Watchlist
             </Link>
             <Link href="/watched" className={pathname === "/watched" ? "text-marigold" : "hover:text-marigold transition-colors duration-300"}>
               Watched
-            </Link>
+            </Link> */}
           </nav>
         </div>
       </header>
