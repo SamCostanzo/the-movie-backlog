@@ -75,7 +75,7 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
         </div>
       </div>
       {trailer && (
-        <div>
+        <div className="pb-16">
           <p className="text-brand uppercase tracking-[3px] text-sm mb-4">✦ Trailer ✦</p>
           <iframe src={`https://www.youtube.com/embed/${trailer.key}`} title="Trailer" allowFullScreen className="w-full aspect-video rounded-xl border-2 border-ink" />
         </div>

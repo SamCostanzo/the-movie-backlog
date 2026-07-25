@@ -35,22 +35,24 @@ export default function LoginPage() {
 
   return (
     <Container>
-      <h1 className="font-display text-3xl mb-6 text-center">Register</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col w-full max-w-md mx-auto gap-4">
-        <input name="name" placeholder="Name" required className="border-2 border-ink rounded px-3 py-2" />
-        <input name="email" type="email" placeholder="Email" required className="border-2 border-ink rounded px-3 py-2" />
-        <input name="password" type="password" placeholder="Password" required className="border-2 border-ink rounded px-3 py-2" />
-        {error && <p className="text-brand">{error}</p>}
-        <button type="submit" disabled={loading} className="max-w-fit bg-brand text-background rounded-full px-6 py-2 uppercase tracking-wider cursor-pointer">
-          {loading ? "Creating..." : "Register"}
-        </button>
-        <p>
-          Already have an account?{" "}
-          <Link href="/login" className="text-fuchsia-600 hover:underline">
-            Log In
-          </Link>
-        </p>
-      </form>
+      <div className="py-16">
+        <h1 className="font-display text-3xl mb-6 text-center">Register</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col w-full max-w-md mx-auto gap-4">
+          <input name="name" placeholder="Name" required className="border-2 border-ink rounded px-3 py-2" />
+          <input name="email" type="email" placeholder="Email" required className="border-2 border-ink rounded px-3 py-2" />
+          <input name="password" type="password" placeholder="Password" required className="border-2 border-ink rounded px-3 py-2" />
+          {error && <p className="text-brand">{error}</p>}
+          <button type="submit" disabled={loading} className="max-w-fit bg-brand text-background rounded-full px-6 py-2 uppercase tracking-wider cursor-pointer">
+            {loading ? "Creating..." : "Register"}
+          </button>
+          <p>
+            Already have an account?{" "}
+            <Link href="/login" className="text-brand hover:underline">
+              Log In
+            </Link>
+          </p>
+        </form>
+      </div>
     </Container>
   );
 }
