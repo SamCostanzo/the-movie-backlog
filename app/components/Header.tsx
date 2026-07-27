@@ -44,7 +44,7 @@ export default function Header() {
       <header className="bg-ink">
         <div className="flex items-center justify-between max-w-6xl mx-auto py-4 px-4">
           <Link href="/">
-            <h1 className="font-display text-2xl text-white">Movie Night</h1>
+            <h1 className="font-display text-2xl text-white">The Movie Backlog</h1>
           </Link>
           <nav className="flex gap-4 text-text-invert uppercase cursor-pointer">
             <Link href="/" className={pathname === "/" ? "text-marigold" : "hover:text-marigold transition-colors duration-300"}>

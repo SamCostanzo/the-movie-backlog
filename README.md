@@ -44,6 +44,7 @@ LIVE CHECKLIST
 5. Style /login and /register (30 min — you have the vocabulary) DONE
 6. Don't allow adding same movie more than once to a list DONE
 7. Add remove movie from list DONE
+8. Add site icon
 
 DEPLOY!!!
 
@@ -90,3 +91,15 @@ ADD AFTER LIVE
 - Maybe show the director on the movie card in the movie list? (Letterboxd)
 
 - Revisit the apps name! Generate a logo?
+
+DOMAIN IDEAS
+moviebacklog.com
+themoviejournal.com
+marqueejournal.com
+
+moviesandfriends.com
+filmswithfriends.com
+
+friendsandmovies.com
+
+thewatchpile.com
