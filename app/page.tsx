@@ -3,8 +3,13 @@ import MovieList from "./components/MovieList";
 import { Movie } from "./types";
 
 export default async function Home() {
-  const res = await fetch("http://localhost:3000/api/movies");
-  const movies: Movie[] = await res.json();
+  const res = await fetch("https://api.themoviedb.org/3/movie/popular", {
+    headers: {
+      Authorization: `Bearer ${process.env.TMDB_TOKEN}`,
+    },
+  });
+  const data = await res.json();
+  const movies = data.results;
 
   return (
     <Container>
