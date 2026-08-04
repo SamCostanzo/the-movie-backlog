@@ -44,13 +44,12 @@ LIVE CHECKLIST
 5. Style /login and /register (30 min — you have the vocabulary) DONE
 6. Don't allow adding same movie more than once to a list DONE
 7. Add remove movie from list DONE
-8. Add site icon
-
-DEPLOY!!!
 
 ADD AFTER LIVE
 
-- Fallback image on movie cards if no poster
+- Add site icon DONE
+
+- Fallback image on movie cards if no poster DONE
 
 - Shared "friends" watchlist
 

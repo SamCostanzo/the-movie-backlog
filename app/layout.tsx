@@ -5,24 +5,21 @@ import { Righteous, Space_Grotesk } from "next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-
-
 // const fredoka = Fredoka({
 //   subsets: ["latin"],
-//   weight: ["400", "500", "600", "700"],  
+//   weight: ["400", "500", "600", "700"],
 //   variable: "--font-display",
 // });
 
 const righteous = Righteous({
   subsets: ["latin"],
-  weight: "400",         
+  weight: "400",
   variable: "--font-display",
 });
 
-
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "700"],   // regular, bold, black
+  weight: ["400", "700"], // regular, bold, black
   variable: "--font-body",
 });
 
@@ -37,7 +34,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Movie Night",
+  title: "The Movie Backlog",
   description: "An app for Sam's friends",
 };
 
