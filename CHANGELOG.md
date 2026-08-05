@@ -1,6 +1,6 @@
 ## 1.2.0 — 2026-08-05
 
-- Movie detail pages now show a backdrop banner image at the top
+- Movie single view now shows a backdrop image at the top
 
 ## 1.1.0 — 08-05-2026
 
