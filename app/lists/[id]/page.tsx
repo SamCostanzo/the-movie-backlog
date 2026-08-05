@@ -5,6 +5,7 @@ import { prisma } from "@/app/lib/prisma";
 import Container from "@/app/components/Container";
 import MovieCard from "@/app/components/MovieCard";
 import { removeMovieFromList } from "@/app/lib/actions";
+import Breadcrumb from "@/app/components/Breadcrumb";
 
 export default async function SingleListPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -37,19 +38,22 @@ export default async function SingleListPage({ params }: { params: Promise<{ id:
 
   return (
     <Container>
-      <h1 className="font-display text-3xl mb-6">{list.name}</h1>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {movies.map((movie) => (
-          <div key={movie.itemId} className="flex flex-col gap-2">
-            <MovieCard key={movie.id} movie={movie} />
-            <form action={removeMovieFromList} className="text-center">
-              <input type="hidden" name="itemId" value={movie.itemId} />
-              <button type="submit" className="text-brand text-xs uppercase tracking-wide hover:opacity-70 cursor-pointer">
-                Remove
-              </button>
-            </form>
-          </div>
-        ))}
+      <div className="pt-16 mb-16">
+        <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Lists", href: "/lists" }, { label: list.name }]} />
+        <h1 className="font-display text-3xl mb-6">{list.name}</h1>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {movies.map((movie) => (
+            <div key={movie.itemId} className="flex flex-col gap-2">
+              <MovieCard key={movie.id} movie={movie} />
+              <form action={removeMovieFromList} className="text-center">
+                <input type="hidden" name="itemId" value={movie.itemId} />
+                <button type="submit" className="text-brand text-xs uppercase tracking-wide hover:opacity-70 cursor-pointer">
+                  Remove
+                </button>
+              </form>
+            </div>
+          ))}
+        </div>
       </div>
     </Container>
   );

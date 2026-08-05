@@ -17,3 +17,8 @@ export type Genre = {
   id: number;
   name: string;
 };
+
+export type BreadcrumbItem = {
+  label: string;
+  href?: string;
+};

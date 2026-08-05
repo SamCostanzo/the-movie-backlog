@@ -47,9 +47,7 @@ LIVE CHECKLIST
 
 ADD AFTER LIVE
 
-- Add site icon DONE
-
-- Fallback image on movie cards if no poster DONE
+- Slugify list URLs, not use random ID
 
 - Shared "friends" watchlist
 
@@ -65,7 +63,7 @@ ADD AFTER LIVE
 
 - When adding a movie to one of your lists, show something to confirm that it worked.
 
-- Add some sort of breadcrumb nav
+- Add some sort of breadcrumb nav MOSTLY DONE
 
 - If I search, click on a movie, and then click back, make it go back to what I was searching as much as possible.
 

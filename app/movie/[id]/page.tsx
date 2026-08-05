@@ -16,13 +16,13 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
   });
 
   const movie = await res.json();
-
   const session = await auth.api.getSession({ headers: await headers() });
 
   let userLists: List[] = [];
   if (session) {
     userLists = await prisma.list.findMany({
       where: { ownerId: session.user.id },
+      orderBy: { name: "asc" },
     });
   }
 
