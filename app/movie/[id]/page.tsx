@@ -34,52 +34,60 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
   const trailer = videoData.results.find((video: Video) => video.site === "YouTube" && video.type === "Trailer");
 
   return (
-    <Container>
-      <div className="flex flex-col md:flex-row gap-8 pt-16 mb-16">
-        {/* LEFT: Poster */}
-        <div className="md:w-1/3 shrink-0">
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`${movie.title} poster`} className="w-full rounded-xl border-2 border-ink" />
+    <>
+      {movie.backdrop_path && (
+        <div className="relative w-full h-[40vh] md:h-[40vh] mb-[-6rem]">
+          <img src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         </div>
-
-        {/* RIGHT: Details */}
-        <div className="md:w-2/3">
-          <h1 className="font-display text-5xl text-ink mb-3">{movie.title}</h1>
-
-          {movie.tagline && <p className="text-brand italic text-lg mb-4">"{movie.tagline}"</p>}
-
-          <div className="flex flex-wrap gap-2 mb-6">
-            <span className="flex items-center justify-center bg-ink text-marigold font-bold text-sm px-4 py-1.5 rounded-full">★ {movie.vote_average?.toFixed(1)}</span>
-            <span className="flex items-center justify-center border-2 border-ink text-ink text-sm px-4 py-1.5 rounded-full">{movie.release_date?.slice(0, 4)}</span>
-            <span className="flex items-center justify-center border-2 border-ink text-ink text-sm px-4 py-1.5 rounded-full">{movie.runtime} min</span>
-            {movie.genres?.slice(0, 2).map((genre: Genre) => (
-              <span key={genre.id} className="flex items-center justify-center border-2 border-ink text-ink text-sm px-4 py-1.5 rounded-full">
-                {genre.name}
-              </span>
-            ))}
+      )}
+      <Container>
+        <div className={`relative flex flex-col md:flex-row gap-8 mb-16 ${movie.backdrop_path ? "" : "pt-16"}`}>
+          {/* LEFT: Poster */}
+          <div className="md:w-1/3 shrink-0">
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`${movie.title} poster`} className="w-full rounded-xl border-2 border-ink" />
           </div>
 
-          <p className="font-body text-ink my-6 leading-relaxed">{movie.overview}</p>
+          {/* RIGHT: Details */}
+          <div className="md:w-2/3">
+            <h1 className="font-display text-5xl text-ink mb-3">{movie.title}</h1>
 
-          {/* Action buttons */}
-          <div className="flex flex-wrap gap-3 items-center">
-            {/* Primary — filled orange */}
-            {/* <button className="bg-brand text-background rounded-full px-6 py-2.5 uppercase text-sm tracking-wider font-body hover:opacity-90 transition-opacity cursor-pointer">+ To Watch</button> */}
+            {movie.tagline && <p className="text-brand italic text-lg mb-4">"{movie.tagline}"</p>}
 
-            {/* Secondary — outlined teal */}
-            {/* <button className="border-2 border-ink text-ink rounded-full px-6 py-2.5 uppercase text-sm tracking-wider font-body hover:bg-ink hover:text-background transition-colors cursor-pointer">
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="flex items-center justify-center bg-ink text-marigold font-bold text-sm px-4 py-1.5 rounded-full">★ {movie.vote_average?.toFixed(1)}</span>
+              <span className="flex items-center justify-center border-2 border-ink text-ink text-sm px-4 py-1.5 rounded-full">{movie.release_date?.slice(0, 4)}</span>
+              <span className="flex items-center justify-center border-2 border-ink text-ink text-sm px-4 py-1.5 rounded-full">{movie.runtime} min</span>
+              {movie.genres?.slice(0, 2).map((genre: Genre) => (
+                <span key={genre.id} className="flex items-center justify-center border-2 border-ink text-ink text-sm px-4 py-1.5 rounded-full">
+                  {genre.name}
+                </span>
+              ))}
+            </div>
+
+            <p className="font-body text-ink my-6 leading-relaxed">{movie.overview}</p>
+
+            {/* Action buttons */}
+            <div className="flex flex-wrap gap-3 items-center">
+              {/* Primary — filled orange */}
+              {/* <button className="bg-brand text-background rounded-full px-6 py-2.5 uppercase text-sm tracking-wider font-body hover:opacity-90 transition-opacity cursor-pointer">+ To Watch</button> */}
+
+              {/* Secondary — outlined teal */}
+              {/* <button className="border-2 border-ink text-ink rounded-full px-6 py-2.5 uppercase text-sm tracking-wider font-body hover:bg-ink hover:text-background transition-colors cursor-pointer">
               ✓ Watched
             </button> */}
 
-            {session && userLists.length > 0 && <AddToListForm movieId={movie.id} userLists={userLists} />}
+              {session && userLists.length > 0 && <AddToListForm movieId={movie.id} userLists={userLists} />}
+            </div>
           </div>
         </div>
-      </div>
-      {trailer && (
-        <div className="pb-16">
-          <p className="text-brand uppercase tracking-[3px] text-sm mb-4">✦ Trailer ✦</p>
-          <iframe src={`https://www.youtube.com/embed/${trailer.key}`} title="Trailer" allowFullScreen className="w-full aspect-video rounded-xl border-2 border-ink" />
-        </div>
-      )}
-    </Container>
+        {trailer && (
+          <div className="pb-16">
+            <p className="text-brand uppercase tracking-[3px] text-sm mb-4">✦ Trailer ✦</p>
+            <iframe src={`https://www.youtube.com/embed/${trailer.key}`} title="Trailer" allowFullScreen className="w-full aspect-video rounded-xl border-2 border-ink" />
+          </div>
+        )}
+      </Container>
+    </>
   );
 }

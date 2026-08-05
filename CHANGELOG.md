@@ -1,3 +1,7 @@
+## 1.2.0 — 2026-08-05
+
+- Movie detail pages now show a backdrop banner image at the top
+
 ## 1.1.0 — 08-05-2026
 
 - Lists now display A-Z on list archive pages and in the dropdown on the single movies page
