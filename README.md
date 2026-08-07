@@ -51,6 +51,8 @@ ADD AFTER LIVE
 
 - Make clickable links on single view for director, actors, studio etc
 
+- While logged out on a single view, where the add to list form would be, add a small link saying "Log in or Register to add to a list"
+
 - Slugify list URLs, not use random ID
 
 - Shared "friends" watchlist
