@@ -47,6 +47,10 @@ LIVE CHECKLIST
 
 ADD AFTER LIVE
 
+- Time in minutes on single view, convert that to more readable HH-MM format
+
+- The tiny message that confirms a movie added to list or already in list, can it fade out after like 3 seconds?
+
 - Add in search by director or actor
 
 - Make clickable links on single view for director, actors, studio etc
