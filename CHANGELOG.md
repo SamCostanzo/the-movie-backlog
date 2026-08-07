@@ -1,3 +1,9 @@
+## 1.3.0 — 2026-08-07
+
+- Search now supports combining title, year, and genre filters together
+- Search state lives in the URL — browser back button now restores your search and results
+- Movie detail pages now show director, studio, and top cast
+
 ## 1.2.0 — 2026-08-05
 
 - Movie single view now shows a backdrop image at the top

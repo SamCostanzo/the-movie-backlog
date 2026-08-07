@@ -47,6 +47,10 @@ LIVE CHECKLIST
 
 ADD AFTER LIVE
 
+- Add in search by director or actor
+
+- Make clickable links on single view for director, actors, studio etc
+
 - Slugify list URLs, not use random ID
 
 - Shared "friends" watchlist

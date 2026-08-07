@@ -13,7 +13,7 @@ export default function AddToListForm({ movieId, userLists }: { movieId: number;
     <div>
       <form action={formAction} className="flex gap-2 items-center">
         <input type="hidden" name="movieId" value={movieId} />
-        <select name="listId" className="border-2 border-ink rounded-full px-4 py-2 bg-surface text-ink">
+        <select name="listId" className="border-2 border-ink rounded-full text-sm px-4 py-2 bg-surface text-ink">
           {userLists.map((list) => (
             <option key={list.id} value={list.id}>
               {list.name}
