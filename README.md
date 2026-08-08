@@ -47,6 +47,8 @@ LIVE CHECKLIST
 
 ADD AFTER LIVE
 
+- Number the movies in a list and be able to control order?
+
 - Time in minutes on single view, convert that to more readable HH-MM format
 
 - The tiny message that confirms a movie added to list or already in list, can it fade out after like 3 seconds?
